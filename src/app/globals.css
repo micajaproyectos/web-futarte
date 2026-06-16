@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN TOKENS — Futarte
+   Paleta APROXIMADA (primer paso). TODO: reemplazar por los
+   valores muestreados del logo real.
+   Regla de marca: el COLOR lo ponen las fotos de los productos,
+   NO la interfaz. El acento se usa SOLO en interactivos.
+   ============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-text:    #1c1c1a; /* negro de la marca (texto / primary) */
+  --color-primary: #1c1c1a; /* alias de texto para superficies oscuras */
+  --color-bg:      #f2ece0; /* crema cálido (fondo base)            */
+  --color-surface: #ffffff; /* superficie de tarjetas               */
+  --color-muted:   #8a857c; /* gris (texto secundario)              */
+  --color-border:  #ded8cc; /* bordes finos                         */
+  --color-accent:  #7e94a3; /* pizarra claro — SOLO relleno detrás de texto oscuro */
+  --color-accent-dark: #4e626e; /* pizarra oscuro — texto/links/borde/foco sobre crema
+                                   (5.42:1 sobre crema → pasa AA texto y foco) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   TEMA TAILWIND v4 — mapea tokens CSS a utilidades Tailwind
+   (bg-bg, text-text, text-muted, border-border, bg-accent, ...)
+   ============================================================ */
+@theme {
+  --color-text:    var(--color-text);
+  --color-primary: var(--color-primary);
+  --color-bg:      var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-muted:   var(--color-muted);
+  --color-border:  var(--color-border);
+  --color-accent:  var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+
+  /* Tipografía (cargada con next/font en layout.tsx).
+     font-sans  → Manrope (cuerpo/UI, minimalista)
+     font-display → Oswald (titulares, sans condensada fuerte, estilo badge) */
+  --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-oswald), "Arial Narrow", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* Foco visible en todos los interactivos (accesibilidad).
+   Usa el pizarra OSCURO para alcanzar ≥3:1 sobre el crema. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-dark);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   ANIMATION TOKENS — fuente de verdad única
+   ============================================================ */
+:root {
+  --anim-duration: 450ms;
+  --anim-ease:     cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-distance: 16px;
+  --anim-delay:    0ms; /* sobreescrito por utilidades / inline style */
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--anim-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+/* Utilidad above-the-fold (hero, sin IntersectionObserver) */
+.animate-fade-up {
+  animation: fade-up var(--anim-duration) var(--anim-ease) var(--anim-delay, 0ms) both;
+}
+
+/* Utilidad ken-burns (solo contenedor de imagen, no la <Image> en sí) */
+.animate-ken-burns {
+  animation: ken-burns 12s ease-in-out infinite alternate;
+}
+
+/* Reveal: estado inicial (invisible) — SOLO cuando JS está activo.
+   Sin la clase "js" en <html> (= sin JS), .reveal permanece visible. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(var(--anim-distance));
+}
+
+/* Reveal: en viewport → animación */
+.js .reveal.in-view {
+  animation: fade-up var(--anim-duration) var(--anim-ease) var(--anim-delay, 0ms) both;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION — una sola fuente de verdad
+   Todo queda en su estado final; cero transforms de entrada.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --anim-duration: 0ms;
+    --anim-distance: 0px;
+  }
+
+  /* Reveal: siempre visible, sin animación */
+  .js .reveal,
+  .js .reveal.in-view {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Hero above-the-fold: siempre visible */
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Sin ken-burns */
+  .animate-ken-burns {
+    animation: none !important;
+    transform: none !important;
+  }
 }
