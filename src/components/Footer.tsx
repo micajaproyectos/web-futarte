@@ -102,9 +102,25 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <p className="mx-auto max-w-6xl px-4 py-4 text-xs text-muted">
-          © {year} Futarte. Hecho en Futaleufú, Patagonia. {/* TODO: copy legal */}
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs sm:flex-row">
+          <p className="text-muted">
+            © {year} Futarte. Hecho en Futaleufú, Patagonia.
+          </p>
+          <a
+            href="https://amtecnologia.cl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-muted transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+          >
+            Creado por
+            <span className="font-bold">
+              <span className="bg-gradient-to-r from-[#7C3AED] to-[#2563EB] bg-clip-text text-transparent">
+                AM
+              </span>
+              <span className="text-text">Tecnología</span>
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );
