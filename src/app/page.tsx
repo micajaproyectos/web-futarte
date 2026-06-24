@@ -278,7 +278,7 @@ export default function HomePage() {
       ──────────────────────────────────────────────────────────────── */}
       <section className="relative z-10 border-y border-border bg-bg">
         <Reveal>
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-4 py-20 md:flex-row md:items-center md:justify-between">
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-4 py-10 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
               <SectionHeading
                 as="h2"
@@ -300,6 +300,78 @@ export default function HomePage() {
             </div>
           </div>
         </Reveal>
+      </section>
+
+      {/* ── CÓMO LLEGAR ──────────────────────────────────────────────── */}
+      <section className="relative z-10 border-y border-border bg-bg">
+        <div className="mx-auto w-full max-w-6xl px-4 py-20">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Datos de la tienda */}
+            <Reveal>
+              <div className="flex flex-col gap-6">
+                <SectionHeading
+                  as="h2"
+                  eyebrow="Visítanos"
+                  title="Cómo llegar"
+                  description="Te esperamos en nuestra tienda, en pleno Futaleufú, Patagonia chilena."
+                />
+                <dl className="flex flex-col gap-4 text-sm">
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-text">
+                      Dirección
+                    </dt>
+                    <dd className="mt-1 text-muted">
+                      Manuel Rodríguez 10, Futaleufú
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-text">
+                      Horario
+                    </dt>
+                    <dd className="mt-1 text-muted">
+                      Lunes a sábado: 9:00 – 20:00 · Domingo cerrado
+                    </dd>
+                  </div>
+                </dl>
+                <a
+                  href="https://maps.app.goo.gl/hRGoBo9AyuA74xfv9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-semibold text-bg transition-[color,background-color,transform,box-shadow] duration-150 hover:-translate-y-px hover:bg-accent-dark hover:shadow-sm motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.7}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                    aria-hidden
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  Cómo llegar
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Mapa */}
+            <Reveal delay={100}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border shadow-sm lg:aspect-[16/11]">
+                <iframe
+                  src="https://maps.google.com/maps?q=-43.1832852,-71.8654784&z=16&output=embed"
+                  title="Ubicación de Futarte en Futaleufú"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 h-full w-full"
+                  style={{ border: 0 }}
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </section>
     </main>
   );
