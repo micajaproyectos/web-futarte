@@ -1,12 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories } from "@/data/categories";
-import { MountainMotif } from "./MountainMotif";
+import { MAPS_URL } from "@/lib/seo";
+import logoTransparente from "../../public/logo_trasnparente.png";
 
-// TODO: redes reales de Futarte (Instagram / Facebook / etc.).
-const socials = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-];
+const INSTAGRAM_URL = "https://www.instagram.com/_futaartesouvenir_";
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
+const WHATSAPP_DISPLAY = "+56 9 9150 2017";
 
 const linkClass =
   "text-muted underline-offset-4 transition-colors hover:text-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark";
@@ -18,13 +18,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
+    <footer className="mt-auto border-t border-border bg-bone">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         {/* Logo + concepto */}
-        <div className="flex flex-col gap-3">
-          {/* TODO: reemplazar wordmark por el logo real */}
-          <span className="font-display text-xl font-semibold uppercase tracking-[0.12em] text-text">Futarte</span>
-          <MountainMotif variant="divider" className="h-7 w-32 text-border" />
+        <div className="flex flex-col gap-4">
+          <Image
+            src={logoTransparente}
+            alt="Futarte — más patagonia"
+            width={176}
+            height={176}
+            className="h-auto w-44"
+          />
           <p className="text-sm leading-relaxed text-muted">
             {/* TODO: copy final */}
             Souvenirs personalizados con identidad patagónica de Futaleufú.
@@ -48,30 +52,51 @@ export function Footer() {
         {/* Horario */}
         <div>
           <h2 className={colTitleClass}>Horario</h2>
-          {/* TODO: horario real de atención */}
           <ul className="flex flex-col gap-2 text-sm text-muted">
-            <li>Lunes a viernes: 10:00 – 18:00</li>
-            <li>Sábado: 10:00 – 14:00</li>
+            <li>Lunes a sábado: 9:00 – 20:00</li>
             <li>Domingo: cerrado</li>
           </ul>
         </div>
 
-        {/* Redes */}
+        {/* Contacto */}
         <div>
-          <h2 className={colTitleClass}>Síguenos</h2>
+          <h2 className={colTitleClass}>Contacto</h2>
           <ul className="flex flex-col gap-2 text-sm">
-            {socials.map((s) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClass}
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Manuel Rodríguez 10, Futaleufú
+              </a>
+            </li>
+            <li>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                WhatsApp {WHATSAPP_DISPLAY}
+              </a>
+            </li>
+            <li>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="mailto:futaleufusouvenir@gmail.com" className={linkClass}>
+                futaleufusouvenir@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>

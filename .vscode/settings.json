@@ -1,0 +1,8 @@
+{
+  // Tailwind v4 usa at-rules propias (@theme, @apply, @utility, @variant…)
+  // que el validador CSS de VS Code no reconoce. Las ignoramos para evitar
+  // falsos positivos "Unknown at rule". En build, PostCSS/Tailwind las procesa bien.
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore"
+}

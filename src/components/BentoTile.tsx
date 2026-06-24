@@ -1,15 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import { AutoImageCarousel } from "./AutoImageCarousel";
 
 type BentoTileProps = {
   href: string;
   title: string;
   description?: string;
   image: string;
+  /** Si se pasan varias imágenes, el área se convierte en un carrusel automático. */
+  images?: string[];
+  /** Intervalo del carrusel automático en ms (por defecto 3000). */
+  interval?: number;
   /** Marca la imagen como candidata a LCP (solo el tile más grande). */
   priority?: boolean;
   /** Tile destacado: tipografía más grande y sinónimo visual de "featured". */
   featured?: boolean;
+  /** Relación de aspecto del área de imagen (ej. "1255/1254"). Si se define, el
+   *  contenedor se adapta al tamaño de la imagen en vez de rellenar la celda. */
+  aspecto?: string;
   /** Clases extra para el <Link> raíz (p.ej. h-full desde Reveal). */
   className?: string;
 };
@@ -19,10 +27,16 @@ export function BentoTile({
   title,
   description,
   image,
+  images,
+  interval,
   priority = false,
   featured = false,
+  aspecto,
   className = "",
 }: BentoTileProps) {
+  const sizes = featured
+    ? "(max-width: 768px) 100vw, 50vw"
+    : "(max-width: 768px) 50vw, 25vw";
   return (
     <Link
       href={href}
@@ -33,20 +47,33 @@ export function BentoTile({
         className,
       ].join(" ")}
     >
-      {/* Imagen — overflow-hidden contiene el scale del hover */}
-      <div className="relative min-h-0 flex-1 overflow-hidden bg-bg">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          sizes={
-            featured
-              ? "(max-width: 768px) 100vw, 50vw"
-              : "(max-width: 768px) 50vw, 25vw"
-          }
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
-          priority={priority}
-        />
+      {/* Imagen — overflow-hidden contiene el scale del hover.
+          Con `aspecto`, el contenedor adopta la relación de la imagen (no recorta);
+          sin él, rellena la celda del bento (flex-1). */}
+      <div
+        className={`relative overflow-hidden bg-surface ${
+          aspecto ? "w-full" : "min-h-0 flex-1"
+        }`}
+        style={aspecto ? { aspectRatio: aspecto } : undefined}
+      >
+        {images && images.length > 1 ? (
+          <AutoImageCarousel
+            images={images}
+            alt={title}
+            priority={priority}
+            sizes={sizes}
+            interval={interval}
+          />
+        ) : (
+          <Image
+            src={images?.[0] ?? image}
+            alt={title}
+            fill
+            sizes={sizes}
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+            priority={priority}
+          />
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
