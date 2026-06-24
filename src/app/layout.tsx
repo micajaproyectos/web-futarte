@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Manrope, Oswald } from "next/font/google";
 import { siteUrl } from "@/lib/env";
 import { getStoreSchema, getWebsiteSchema } from "@/lib/seo";
@@ -77,6 +78,18 @@ export default function RootLayout({
           <Footer />
           <CartDrawer />
         </CartProvider>
+
+        {/* Google Analytics (GA4) — carga diferida tras la hidratación */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HMEDNYRC9M"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HMEDNYRC9M');`}
+        </Script>
       </body>
     </html>
   );
