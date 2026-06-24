@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { categories } from "@/data/categories";
 import { MAPS_URL } from "@/lib/seo";
-import logoTransparente from "../../public/logo_trasnparente.png";
+import logoTransparente from "../../public/logo_transparente.svg";
 
 const INSTAGRAM_URL = "https://www.instagram.com/_futaartesouvenir_";
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";

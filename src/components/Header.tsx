@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logoFutarte from "../../public/logo_trasnparente.png";
+import logoFutarte from "../../public/logo_transparente.svg";
 import { categories } from "@/data/categories";
 import { MobileNav } from "./MobileNav";
 import { CartButton } from "./cart/CartButton";
