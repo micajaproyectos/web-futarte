@@ -161,6 +161,16 @@ export const products: Product[] = [
     tipo: "Polerones",
     aspecto: "1254/1254",
   },
+  {
+    id: "poleron-futaleufu-patagonia-blanco",
+    nombre: "Polerón Futaleufú Patagonia",
+    descripcion: "Polerón blanco con la frase «El que no pasa por Futaleufú no conoció toda la Patagonia».",
+    precio: 28000,
+    imagen: "/ropa/polerones/poleron_sinopasaporfutaleufu_blanco.png",
+    categoria: "ropa",
+    tipo: "Polerones",
+    aspecto: "1254/1254",
+  },
 
   // ── ROPA · Polerones Infantiles (unisex) ────────────────────
   {
