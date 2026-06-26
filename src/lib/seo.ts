@@ -58,6 +58,10 @@ export function getStoreSchema() {
     priceRange: "$$",
     currenciesAccepted: "CLP",
     areaServed: "Futaleufú, Patagonia, Chile",
+    // Incluye la grafía sin tilde ("Futaleufu") porque mucha gente la
+    // teclea así; ayuda a que Google asocie ambas formas.
+    keywords:
+      "regalos Futaleufu, souvenirs Futaleufu, recuerdos Futaleufu, regalos Futaleufú, souvenirs Futaleufú, tienda Futaleufu, Patagonia chilena",
   };
 }
 

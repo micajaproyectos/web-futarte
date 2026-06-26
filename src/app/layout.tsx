@@ -23,11 +23,11 @@ const oswald = Oswald({
   display: "swap",
 });
 
-const SITE_TITLE = "Futarte — Souvenirs de Futaleufú, Patagonia";
+const SITE_TITLE = "Futarte — Regalos y Souvenirs de Futaleufú";
 const SITE_DESCRIPTION =
-  "Souvenirs y regalos de Futaleufú: ropa, botellas, mates y piezas únicas con la identidad de la Patagonia chilena. Llévate un pedacito del sur.";
+  "Regalos y souvenirs de Futaleufú: ropa, botellas, mates y piezas únicas con la identidad de la Patagonia chilena. Llévate un pedacito del sur.";
 const OG_DESCRIPTION =
-  "Souvenirs y regalos de Futaleufú: ropa, botellas, mates y piezas únicas de la Patagonia chilena.";
+  "Regalos y souvenirs de Futaleufú: ropa, botellas, mates y piezas únicas de la Patagonia chilena.";
 
 export const metadata: Metadata = {
   title: {
