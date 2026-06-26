@@ -25,13 +25,30 @@ export function ProductCard({ product }: { product: Product }) {
     ? `${product.nombre} ${variante.nombre} — souvenir de Futaleufú, Patagonia`
     : `${product.nombre} — souvenir de Futaleufú, Patagonia`;
 
-  // Ítem de carrito: id único por producto + variante de color.
+  // Opciones que se eligen dentro del carrito:
+  //  · poleras y polerones de adulto → color y talla
+  //  · polerones infantiles → solo color
+  const esRopa = product.categoria === "ropa";
+  const pideTalla =
+    esRopa && (product.tipo === "Poleras" || product.tipo === "Polerones");
+  const pideColor = pideTalla || (esRopa && product.tipo === "Polerones Infantiles");
+  const pideOpciones = pideColor || pideTalla;
+
+  // Ítem de carrito. Las prendas con opciones reciben un id único por cada
+  // "Añadir" (así dos combos color/talla del mismo modelo no se fusionan);
+  // el resto mantiene id por producto + variante de color para sumar cantidad.
   const agregar = () =>
     add({
-      id: variante ? `${product.id}--${variante.nombre}` : product.id,
+      id: pideOpciones
+        ? `${product.id}--${crypto.randomUUID()}`
+        : variante
+          ? `${product.id}--${variante.nombre}`
+          : product.id,
       nombre: variante ? `${product.nombre} (${variante.nombre})` : product.nombre,
       precio: product.precio,
       imagen,
+      ...(pideColor ? { pideColor: true } : {}),
+      ...(pideTalla ? { pideTalla: true } : {}),
     });
 
   return (

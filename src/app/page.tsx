@@ -39,9 +39,13 @@ export default function HomePage() {
           sticky + z-0 → el catálogo sube encima al scrollear.
           La <Image> tiene priority y SIN fade (es el LCP).
       ──────────────────────────────────────────────────────────────── */}
-      <section className="sticky top-0 z-0 grid items-center md:grid-cols-[5fr_7fr]">
-        {/* Texto — entrada escalonada above-the-fold vía CSS puro */}
-        <div className="flex flex-col items-start justify-center gap-6 px-6 py-16 sm:px-10 md:py-24">
+      <section className="sticky top-0 z-0 md:grid md:items-center md:grid-cols-[5fr_7fr]">
+        {/* Texto — entrada escalonada above-the-fold vía CSS puro.
+            En móvil va SOBRE la foto (que pasa a fondo full-bleed, ver más abajo)
+            dentro de un panel claro semitransparente para mantener la legibilidad.
+            En md+ el panel se desactiva y vuelve a ser la columna izquierda. */}
+        <div className="relative z-10 px-6 py-16 sm:px-10 md:col-start-1 md:row-start-1 md:py-24">
+          <div className="flex max-w-md flex-col items-start gap-6 rounded-2xl border border-border/60 bg-bone/85 p-6 shadow-sm backdrop-blur-sm sm:p-8 md:max-w-none md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-none">
           <h1 className="font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight text-text sm:text-5xl lg:text-6xl">
             {/* TODO: titular final */}
             <Typewriter text="Llévate una parte de Futaleufú" speed={77} />
@@ -66,13 +70,15 @@ export default function HomePage() {
             {/* TODO: copy CTA */}
             Ver el catálogo
           </Link>
+          </div>
         </div>
 
-        {/* Imagen — relación 3:2 idéntica a la del archivo (1536×1024) para
-            mostrarla a tamaño nativo: object-cover solo la reduce, nunca la
-            amplía, evitando el pixelado. */}
+        {/* Imagen — en móvil es el FONDO full-bleed del hero (absolute inset-0,
+            detrás del panel de texto). En md+ vuelve a ser la columna derecha
+            con relación 3:2 idéntica a la del archivo (1536×1024): object-cover
+            solo la reduce, nunca la amplía, evitando el pixelado. */}
         <div
-          className="relative aspect-[3/2] w-full overflow-hidden md:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,#000_7%)] md:[mask-image:linear-gradient(to_right,transparent_0%,#000_7%)]"
+          className="absolute inset-0 overflow-hidden md:relative md:inset-auto md:col-start-2 md:row-start-1 md:aspect-[3/2] md:w-full md:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,#000_7%)] md:[mask-image:linear-gradient(to_right,transparent_0%,#000_7%)]"
         >
           <div className="absolute inset-0 animate-ken-burns">
             <Image

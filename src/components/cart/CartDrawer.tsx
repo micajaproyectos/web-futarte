@@ -2,12 +2,20 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useCart } from "./CartProvider";
-import { cartTotal, checkoutHref, formatCLP } from "@/lib/cart";
+import {
+  cartTotal,
+  checkoutHref,
+  faltanOpciones,
+  formatCLP,
+  COLORES_ROPA,
+  TALLAS_ROPA,
+} from "@/lib/cart";
 
 export function CartDrawer() {
-  const { items, isOpen, close, setQty, remove, clear } = useCart();
+  const { items, isOpen, close, setQty, setOpciones, remove, clear } = useCart();
   const total = cartTotal(items);
   const vacio = items.length === 0;
+  const incompleto = faltanOpciones(items);
 
   // Cierra con Escape y bloquea el scroll del fondo mientras está abierto.
   useEffect(() => {
@@ -98,6 +106,67 @@ export function CartDrawer() {
                     {it.nombre}
                   </p>
                   <p className="text-sm text-muted">{formatCLP(it.precio)}</p>
+
+                  {/* Color (poleras, polerones y polerones infantiles) y
+                      talla (solo poleras y polerones de adulto) */}
+                  {it.pideColor || it.pideTalla ? (
+                    <div className="mt-2 flex flex-col gap-2">
+                      {it.pideColor ? (
+                      <div
+                        role="group"
+                        aria-label={`Color de ${it.nombre}`}
+                        className="flex flex-wrap items-center gap-2"
+                      >
+                        {COLORES_ROPA.map((c) => {
+                          const sel = it.color === c.nombre;
+                          return (
+                            <button
+                              key={c.nombre}
+                              type="button"
+                              onClick={() => setOpciones(it.id, { color: c.nombre })}
+                              aria-pressed={sel}
+                              aria-label={`Color ${c.nombre}`}
+                              title={c.nombre}
+                              className={`h-5 w-5 rounded-full transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark ${
+                                sel
+                                  ? "ring-2 ring-text ring-offset-2 ring-offset-bg"
+                                  : "ring-1 ring-border hover:ring-text/40"
+                              }`}
+                              style={{ backgroundColor: c.hex }}
+                            />
+                          );
+                        })}
+                      </div>
+                      ) : null}
+                      {it.pideTalla ? (
+                      <div
+                        role="group"
+                        aria-label={`Talla de ${it.nombre}`}
+                        className="flex flex-wrap items-center gap-1.5"
+                      >
+                        {TALLAS_ROPA.map((t) => {
+                          const sel = it.talla === t;
+                          return (
+                            <button
+                              key={t}
+                              type="button"
+                              onClick={() => setOpciones(it.id, { talla: t })}
+                              aria-pressed={sel}
+                              className={`min-w-7 rounded-md border px-1.5 py-0.5 text-xs font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark ${
+                                sel
+                                  ? "border-text bg-text text-bg"
+                                  : "border-border text-text hover:border-text/40"
+                              }`}
+                            >
+                              {t}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      ) : null}
+                    </div>
+                  ) : null}
+
                   <div className="mt-auto flex items-center justify-between gap-2 pt-2">
                     {/* Cantidad */}
                     <div className="inline-flex items-center rounded-full border border-border">
@@ -144,26 +213,54 @@ export function CartDrawer() {
                 {formatCLP(total)}
               </span>
             </div>
-            <a
-              href={checkoutHref(items)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-semibold text-bg transition-[color,background-color,transform,box-shadow] duration-150 hover:-translate-y-px hover:bg-accent-dark hover:shadow-sm motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.6}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                aria-hidden
+            {incompleto ? (
+              <>
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-full bg-text/40 px-6 py-3 text-sm font-semibold text-bg"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.6}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                    aria-hidden
+                  >
+                    <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z" />
+                  </svg>
+                  Ir a Pagar
+                </button>
+                <p className="mt-2 text-center text-xs text-accent-dark">
+                  Elige color y talla en cada prenda para continuar.
+                </p>
+              </>
+            ) : (
+              <a
+                href={checkoutHref(items)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-semibold text-bg transition-[color,background-color,transform,box-shadow] duration-150 hover:-translate-y-px hover:bg-accent-dark hover:shadow-sm motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
               >
-                <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z" />
-              </svg>
-              Ir a Pagar
-            </a>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.6}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4"
+                  aria-hidden
+                >
+                  <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z" />
+                </svg>
+                Ir a Pagar
+              </a>
+            )}
             <button
               type="button"
               onClick={clear}

@@ -7,7 +7,26 @@ export type CartItem = {
   precio: number;
   imagen: string;
   qty: number;
+  // Prendas que eligen opciones dentro del carrito antes de ir a pagar:
+  //  · poleras y polerones de adulto → color y talla
+  //  · polerones infantiles → solo color
+  pideColor?: boolean;
+  pideTalla?: boolean;
+  color?: string;
+  talla?: string;
 };
+
+// Color y talla seleccionables para poleras y polerones de adulto. Aplican a
+// todas las prendas por igual (independiente del color que muestre la foto).
+export const COLORES_ROPA = [
+  { nombre: "Negro", hex: "#1a1a1a" },
+  { nombre: "Blanco", hex: "#ffffff" },
+  { nombre: "Azul Marino", hex: "#1e2a44" },
+  { nombre: "Verde Botella", hex: "#0f3d2e" },
+  { nombre: "Café", hex: "#5b3a29" },
+] as const;
+
+export const TALLAS_ROPA = ["XS", "S", "M", "L", "XL", "XXL"] as const;
 
 const clp = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -46,12 +65,23 @@ export function removeFromCart(items: CartItem[], id: string): CartItem[] {
   return items.filter((i) => i.id !== id);
 }
 
-/** Mensaje de WhatsApp con producto + cantidad + total. */
+/** True si alguna prenda con opciones aún no eligió el color o la talla pedidos. */
+export function faltanOpciones(items: CartItem[]): boolean {
+  return items.some(
+    (it) => (it.pideColor && !it.color) || (it.pideTalla && !it.talla),
+  );
+}
+
+/** Mensaje de WhatsApp con producto + cantidad + (color/talla) + total. */
 export function buildCheckoutMessage(items: CartItem[]): string {
   if (items.length === 0) return "Hola, quiero hacer un pedido en su tienda.";
-  const lineas = items.map(
-    (it) => `• ${it.qty}× ${it.nombre} — ${formatCLP(it.precio * it.qty)}`,
-  );
+  const lineas = items.map((it) => {
+    const partes: string[] = [];
+    if (it.pideColor) partes.push(`Color: ${it.color ?? "—"}`);
+    if (it.pideTalla) partes.push(`Talla: ${it.talla ?? "—"}`);
+    const detalle = partes.length ? ` — ${partes.join(" · ")}` : "";
+    return `• ${it.qty}× ${it.nombre}${detalle} — ${formatCLP(it.precio * it.qty)}`;
+  });
   return [
     "Hola, quiero comprar los siguientes productos de su tienda:",
     "",

@@ -48,11 +48,15 @@ export function BentoTile({
       ].join(" ")}
     >
       {/* Imagen — overflow-hidden contiene el scale del hover.
-          Con `aspecto`, el contenedor adopta la relación de la imagen (no recorta);
-          sin él, rellena la celda del bento (flex-1). */}
+          Con `aspecto`, el contenedor adopta la relación de la imagen (no recorta).
+          Sin él: en móvil usa un cuadrado (aspect-square) para no recortar los
+          productos —las celdas apaisadas cortaban botellas/mates—; en md+ vuelve
+          a rellenar la celda del bento (flex-1), donde la alineación 2×2 funciona. */}
       <div
         className={`relative overflow-hidden bg-surface ${
-          aspecto ? "w-full" : "min-h-0 flex-1"
+          aspecto
+            ? "w-full"
+            : "aspect-square w-full md:aspect-auto md:w-auto md:min-h-0 md:flex-1"
         }`}
         style={aspecto ? { aspectRatio: aspecto } : undefined}
       >

@@ -21,6 +21,7 @@ type CartContextValue = {
   add: (item: Omit<CartItem, "qty">) => void;
   remove: (id: string) => void;
   setQty: (id: string, qty: number) => void;
+  setOpciones: (id: string, patch: { color?: string; talla?: string }) => void;
   clear: () => void;
   open: () => void;
   close: () => void;
@@ -72,14 +73,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
     (id: string, qty: number) => setItems((prev) => setQtyLogic(prev, id, qty)),
     [],
   );
+  const setOpciones = useCallback(
+    (id: string, patch: { color?: string; talla?: string }) =>
+      setItems((prev) => prev.map((i) => (i.id === id ? { ...i, ...patch } : i))),
+    [],
+  );
   const clear = useCallback(() => setItems([]), []);
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
   const toggle = useCallback(() => setIsOpen((o) => !o), []);
 
   const value = useMemo(
-    () => ({ items, isOpen, add, remove, setQty, clear, open, close, toggle }),
-    [items, isOpen, add, remove, setQty, clear, open, close, toggle],
+    () => ({ items, isOpen, add, remove, setQty, setOpciones, clear, open, close, toggle }),
+    [items, isOpen, add, remove, setQty, setOpciones, clear, open, close, toggle],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
