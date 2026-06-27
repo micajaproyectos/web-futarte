@@ -381,4 +381,60 @@ export const products: Product[] = [
     tipo: "Vasos",
     aspecto: "1254/1254",
   },
+
+  // ── PIEZAS ÚNICAS · Joyeros ─────────────────────────────────
+  {
+    id: "joyero-celeste",
+    nombre: "Joyero de Viaje Celeste",
+    descripcion:
+      "Joyero de viaje celeste con cierre, compartimentos y ranuras para anillos.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_celeste_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_celeste_A.png",
+      "/piezasunicas/joyeros/joyero_celeste_B.png",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "joyero-rosa",
+    nombre: "Joyero de Viaje Rosa",
+    descripcion:
+      "Joyero de viaje rosa con cierre, compartimentos y ranuras para anillos.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_rosa_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_rosa_A.png",
+      "/piezasunicas/joyeros/joyero_rosa_B.png",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+
+  // ── PIEZAS ÚNICAS · Bolsas Reciclables ──────────────────────
+  {
+    id: "bolsa-reciclable-chucao",
+    nombre: "Bolsa Reciclable Chucao",
+    descripcion:
+      "Bolsa de algodón reciclado verde con el chucao tomando mate, ave patagónica.",
+    precio: 6000,
+    imagen: "/piezasunicas/bolsas_reciclables/bolsa_reciclable_chucao_verde.png",
+    categoria: "piezas-unicas",
+    tipo: "Bolsas Reciclables",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "bolsa-reciclable-martinpescador",
+    nombre: "Bolsa Reciclable Martín Pescador",
+    descripcion:
+      "Bolsa de algodón reciclado crema con el martín pescador tomando mate.",
+    precio: 6000,
+    imagen: "/piezasunicas/bolsas_reciclables/bolsa_reciclable_martinpescador_crema.png",
+    categoria: "piezas-unicas",
+    tipo: "Bolsas Reciclables",
+    aspecto: "1254/1254",
+  },
 ];
