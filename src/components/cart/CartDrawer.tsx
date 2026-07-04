@@ -42,11 +42,13 @@ export function CartDrawer() {
         }`}
       />
 
-      {/* Panel */}
-      <aside
+      {/* Panel. `inert` lo saca del árbol de accesibilidad y del orden de
+          tabulación mientras está cerrado (solo se oculta con transform). */}
+      <div
         role="dialog"
         aria-modal="true"
         aria-label="Tu pedido"
+        inert={!isOpen}
         className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-bg shadow-xl transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -270,7 +272,7 @@ export function CartDrawer() {
             </button>
           </div>
         ) : null}
-      </aside>
+      </div>
     </>
   );
 }

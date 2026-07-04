@@ -86,7 +86,7 @@ export default function HomePage() {
               alt="Personas con prendas Futarte frente al lago y las montañas nevadas de Futaleufú, Chile"
               fill
               priority
-              quality={90}
+              quality={75}
               sizes="(max-width: 768px) 100vw, 58vw"
               className="animate-blur-in object-cover"
             />
@@ -155,7 +155,6 @@ export default function HomePage() {
                   image={featuredCategory.imagen}
                   images={featuredImages}
                   featured
-                  priority
                   aspecto="1255/1254"
                 />
               </Reveal>
