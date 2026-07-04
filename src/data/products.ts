@@ -273,6 +273,17 @@ export const products: Product[] = [
     tipo: "Botellas",
     aspecto: "1254/1254",
   },
+  {
+    id: "botella-termica-trekking-futaleufu",
+    nombre: "Botella Térmica Trekking",
+    descripcion:
+      "Botella térmica blanca con tapa con asa e ilustración del paisaje otoñal de Futaleufú, Patagonia chilena.",
+    precio: 18000,
+    imagen: "/botellas/botella_treka_futaleufu_blanca.png",
+    categoria: "souvenir",
+    tipo: "Botellas",
+    aspecto: "1254/1254",
+  },
 
   // ── SOUVENIR · Termos ───────────────────────────────────────
   {
@@ -303,6 +314,63 @@ export const products: Product[] = [
     imagen: "/botellas/termo_paisaje_futaleufu_naranja.png",
     categoria: "souvenir",
     tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-futaleufu-blanco",
+    nombre: "Termo Futaleufú Blanco",
+    descripcion:
+      "Termo de acero inoxidable blanco con asa y grabado de las montañas de Futaleufú. Mantiene la temperatura por horas.",
+    precio: 18000,
+    imagen: "/botellas/termo_futaleufu_blanca.png",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-paisaje-pintado-por-dios-lavanda",
+    nombre: "Termo Paisaje Pintado por Dios",
+    descripcion:
+      "Termo de acero inoxidable lavanda con asa y grabado del río Futaleufú junto a la frase «Un paisaje pintado por Dios». Mantiene la temperatura por horas.",
+    precio: 18000,
+    imagen: "/botellas/termo_futaleufupaisajepintadopordios_lavanda.png",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+
+  // ── SOUVENIR · Mugs ─────────────────────────────────────────
+  {
+    id: "mug-futaleufu-blanco",
+    nombre: "Mug Futaleufú",
+    descripcion:
+      "Mug térmico de viaje blanco con las letras de Futaleufú sobre el paisaje y kayakistas en el río.",
+    precio: 12000,
+    imagen: "/botellas/vaso_mug_futaleufu_blanca.png",
+    categoria: "souvenir",
+    tipo: "Mugs",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "mug-atardecer-futaleufu",
+    nombre: "Mug Atardecer Futaleufú",
+    descripcion:
+      "Mug térmico de viaje con asa e ilustración del atardecer sobre el río Futaleufú, Patagonia chilena.",
+    precio: 12000,
+    imagen: "/botellas/vaso_mug_futaleufuatardecer_blanco.png",
+    categoria: "souvenir",
+    tipo: "Mugs",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "mug-kayak-futaleufu",
+    nombre: "Mug Kayak",
+    descripcion:
+      "Mug térmico de viaje blanco con ilustración de kayakistas descendiendo el río Futaleufú entre montañas.",
+    precio: 12000,
+    imagen: "/botellas/vaso_mug_kayak.png",
+    categoria: "souvenir",
+    tipo: "Mugs",
     aspecto: "1254/1254",
   },
 
@@ -412,6 +480,34 @@ export const products: Product[] = [
     categoria: "piezas-unicas",
     tipo: "Joyeros",
     aspecto: "1254/1254",
+  },
+
+  // ── PIEZAS ÚNICAS · Morrales ────────────────────────────────
+  {
+    id: "morral-rafting-futaleufu",
+    nombre: "Morral Rafting Futaleufú",
+    descripcion:
+      "Morral azul con cordón, bolsillo de malla con cierre y estampado de las letras de Futaleufú con escenas de rafting en el río.",
+    precio: 5500,
+    imagen: "/piezasunicas/morrales/morral_futaleufu_azul.png",
+    categoria: "piezas-unicas",
+    tipo: "Morrales",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "morral-futaleufu-patagonia",
+    nombre: "Morral Futaleufú Patagonia",
+    descripcion:
+      "Morral con cordón, bolsillo de malla con cierre y la frase «El que no pasa por Futaleufú no conoció toda la Patagonia».",
+    precio: 5500,
+    imagen: "/piezasunicas/morrales/morral_futaleufu_blanco.png",
+    categoria: "piezas-unicas",
+    tipo: "Morrales",
+    aspecto: "1254/1254",
+    colores: [
+      { nombre: "Blanco", hex: "#f2ede4", imagen: "/piezasunicas/morrales/morral_futaleufu_blanco.png" },
+      { nombre: "Rojo", hex: "#e3352c", imagen: "/piezasunicas/morrales/morral_futaleufu_rojo.png" },
+    ],
   },
 
   // ── PIEZAS ÚNICAS · Bolsas Reciclables ──────────────────────

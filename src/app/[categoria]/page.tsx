@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       ) : (
         // Una grilla por cada tipo (p. ej. Poleras, Gorras): hasta 4 por fila
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-10">
           {groups.map((group) => (
             <div key={group.tipo ?? "general"}>
               {group.tipo ? (
@@ -97,7 +97,7 @@ export default async function CategoryPage({ params }: Props) {
                   {group.tipo}
                 </h2>
               ) : null}
-              <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-6 gap-y-5 px-4 sm:grid-cols-2 lg:grid-cols-4">
                 {group.items.map((product, i) => (
                   <Reveal key={product.id} delay={(i % 4) * 70}>
                     <ProductCard product={product} />

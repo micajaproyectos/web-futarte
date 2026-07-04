@@ -94,7 +94,7 @@ export function ProductCard({ product }: { product: Product }) {
           </svg>
         </span>
       </button>
-      <div className="flex flex-1 flex-col gap-2 p-5">
+      <div className="flex flex-1 flex-col gap-1.5 p-4">
         {tieneColores ? (
           <div
             role="group"
@@ -122,10 +122,10 @@ export function ProductCard({ product }: { product: Product }) {
             })}
           </div>
         ) : null}
-        <h3 className="line-clamp-2 min-h-[3rem] font-semibold text-text">
+        <h3 className="line-clamp-2 font-semibold text-text">
           {product.nombre}
         </h3>
-        <p className="line-clamp-3 min-h-[3.75rem] text-sm leading-relaxed text-muted">
+        <p className="line-clamp-3 text-sm leading-relaxed text-muted">
           {product.descripcion}
         </p>
         {/* Espaciador: empuja precio y botón al fondo para alinearlos en todas las tarjetas */}
@@ -136,7 +136,7 @@ export function ProductCard({ product }: { product: Product }) {
         <button
           type="button"
           onClick={agregar}
-          className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-semibold text-bg transition-[color,background-color,transform,box-shadow] duration-150 hover:-translate-y-px hover:bg-accent-dark hover:shadow-sm motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-text px-6 py-2.5 text-sm font-semibold text-bg transition-[color,background-color,transform,box-shadow] duration-150 hover:-translate-y-px hover:bg-accent-dark hover:shadow-sm motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
         >
           <svg
             viewBox="0 0 24 24"
