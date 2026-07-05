@@ -11,6 +11,8 @@ type Props = {
   priority?: boolean;
   /** sizes para next/image. */
   sizes?: string;
+  /** quality para next/image (debe existir en `images.qualities`). */
+  quality?: number;
 };
 
 export function AutoImageCarousel({
@@ -19,6 +21,7 @@ export function AutoImageCarousel({
   interval = 3000,
   priority = false,
   sizes,
+  quality,
 }: Props) {
   const [index, setIndex] = useState(0);
 
@@ -48,6 +51,7 @@ export function AutoImageCarousel({
               alt={i === 0 ? alt : ""}
               fill
               sizes={sizes}
+              quality={quality}
               className="object-cover"
               priority={priority && i === 0}
             />

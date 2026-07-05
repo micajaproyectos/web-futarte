@@ -66,6 +66,7 @@ export function BentoTile({
             alt={title}
             priority={priority}
             sizes={sizes}
+            quality={65}
             interval={interval}
           />
         ) : (
@@ -74,6 +75,7 @@ export function BentoTile({
             alt={title}
             fill
             sizes={sizes}
+            quality={65}
             className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
             priority={priority}
           />

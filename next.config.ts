@@ -14,7 +14,9 @@ const nextConfig: NextConfig = {
     // con WebP como fallback para navegadores sin soporte.
     formats: ["image/avif", "image/webp"],
     // Calidades permitidas para next/image (Next 16 las exige explícitas).
-    qualities: [75, 90],
+    // 60 → hero LCP · 65 → miniaturas de producto (carruseles/tarjetas)
+    // 75 → default del resto (lightbox, retratos) · 90 → reserva alta fidelidad.
+    qualities: [60, 65, 75, 90],
   },
 };
 

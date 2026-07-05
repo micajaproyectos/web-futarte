@@ -87,7 +87,7 @@ export default function HomePage() {
               fill
               preload
               fetchPriority="high"
-              quality={75}
+              quality={60}
               sizes="(max-width: 768px) 100vw, 58vw"
               className="animate-blur-in object-cover"
             />

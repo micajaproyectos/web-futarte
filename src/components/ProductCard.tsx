@@ -65,6 +65,7 @@ export function ProductCard({ product }: { product: Product }) {
             images={fotos}
             alt={altImagen}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={65}
           />
         ) : (
           <Image
@@ -72,6 +73,7 @@ export function ProductCard({ product }: { product: Product }) {
             alt={altImagen}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={65}
             className="object-cover"
           />
         )}
