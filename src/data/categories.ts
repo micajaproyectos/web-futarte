@@ -14,7 +14,7 @@ export const categories: Category[] = [
     nombre: "Ropa",
     descripcion:
       "Poleras, polerones y gorros con diseños de Futaleufú y la fauna patagónica. Algodón de calidad con identidad del sur de Chile.",
-    imagen: "/ropa/poleras/polera_futaleufu_chile.png",
+    imagen: "/ropa/poleras/polera_futaleufu_chile.webp",
     aspecto: "1254/1254",
   },
   {
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     nombre: "Souvenir",
     descripcion:
       "Botellas, termos y recuerdos de Futaleufú para llevar contigo la esencia de la Patagonia chilena.",
-    imagen: "/botellas/botella_futaleufu2_blanca.png",
+    imagen: "/botellas/botella_futaleufu2_blanca.webp",
     aspecto: "1254/1254",
   },
   {
@@ -30,7 +30,7 @@ export const categories: Category[] = [
     nombre: "Piezas Únicas",
     descripcion:
       "Mates, vasos esmaltados y piezas artesanales únicas inspiradas en Futaleufú y la Patagonia.",
-    imagen: "/piezasunicas/mate_dibujo_emoji.png",
+    imagen: "/piezasunicas/mate_dibujo_emoji.webp",
     aspecto: "1254/1254",
   },
 ];

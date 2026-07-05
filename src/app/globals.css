@@ -14,7 +14,8 @@
   --color-cream:   #e8dcc6; /* beige cálido (un poco más café) — secciones de énfasis */
   --color-surface: #ffffff; /* superficie de tarjetas               */
   --color-bone:    #ece6da; /* blanco hueso — navbar (contraste sobre el blanco) */
-  --color-muted:   #8a857c; /* gris (texto secundario)              */
+  --color-muted:   #66615a; /* gris cálido (texto secundario) — AA: 6.1:1 sobre bg/surface,
+                               4.9:1 sobre bone, 4.5:1 sobre cream */
   --color-border:  #ded8cc; /* bordes finos                         */
   --color-accent:  #7e94a3; /* pizarra claro — SOLO relleno detrás de texto oscuro */
   --color-accent-dark: #4e626e; /* pizarra oscuro — texto/links/borde/foco sobre crema

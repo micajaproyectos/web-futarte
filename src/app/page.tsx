@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import heroFutarte from "../../public/futaerte.png";
-import minimalistaLogo from "../../public/minimalista_logo.png";
-import fotoCreadores from "../../public/foto_creadores.png";
+import heroFutarte from "../../public/futaerte.webp";
+import minimalistaLogo from "../../public/minimalista_logo.webp";
+import fotoCreadores from "../../public/foto_creadores.webp";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 import { BentoTile } from "@/components/BentoTile";
@@ -37,7 +37,7 @@ export default function HomePage() {
     <main className="flex flex-col">
       {/* ── HERO ──────────────────────────────────────────────────────
           sticky + z-0 → el catálogo sube encima al scrollear.
-          La <Image> tiene priority y SIN fade (es el LCP).
+          La <Image> tiene preload + fetchPriority="high" y SIN fade (es el LCP).
       ──────────────────────────────────────────────────────────────── */}
       <section className="sticky top-0 z-0 md:grid md:items-center md:grid-cols-[5fr_7fr]">
         {/* Texto — entrada escalonada above-the-fold vía CSS puro.
@@ -85,7 +85,8 @@ export default function HomePage() {
               src={heroFutarte}
               alt="Personas con prendas Futarte frente al lago y las montañas nevadas de Futaleufú, Chile"
               fill
-              priority
+              preload
+              fetchPriority="high"
               quality={75}
               sizes="(max-width: 768px) 100vw, 58vw"
               className="animate-blur-in object-cover"
