@@ -9,6 +9,7 @@ import { products } from "@/data/products";
 import { BentoTile } from "@/components/BentoTile";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { MapEmbed } from "@/components/MapEmbed";
 import { MountainMotif } from "@/components/MountainMotif";
 import { Reveal } from "@/components/Reveal";
 import { Typewriter } from "@/components/Typewriter";
@@ -366,14 +367,7 @@ export default function HomePage() {
             {/* Mapa */}
             <Reveal delay={100}>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border shadow-sm lg:aspect-[16/11]">
-                <iframe
-                  src="https://maps.google.com/maps?q=-43.1832852,-71.8654784&z=16&output=embed"
-                  title="Ubicación de Futarte en Futaleufú"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 h-full w-full"
-                  style={{ border: 0 }}
-                />
+                <MapEmbed />
               </div>
             </Reveal>
           </div>
