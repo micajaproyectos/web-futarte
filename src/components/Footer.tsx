@@ -2,11 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { categories } from "@/data/categories";
 import { MAPS_URL } from "@/lib/seo";
+import { WHATSAPP_DISPLAY, whatsappHref } from "@/lib/whatsapp";
 import logoTransparente from "../../public/logo_transparente.svg";
 
 const INSTAGRAM_URL = "https://www.instagram.com/_futaartesouvenir_";
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
-const WHATSAPP_DISPLAY = "+56 9 9150 2017";
 
 const linkClass =
   "text-muted underline-offset-4 transition-colors hover:text-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark";
@@ -74,7 +73,7 @@ export function Footer() {
             </li>
             <li>
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={whatsappHref()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={linkClass}

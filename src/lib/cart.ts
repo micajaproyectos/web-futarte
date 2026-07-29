@@ -1,6 +1,8 @@
 // Lógica pura del carrito (sin React). Tipos, cálculos, formato y el mensaje
 // de WhatsApp del checkout. Se consume desde el CartProvider y la UI.
 
+import { whatsappHref } from "./whatsapp";
+
 export type CartItem = {
   id: string; // único por producto + variante de color
   nombre: string;
@@ -91,10 +93,7 @@ export function buildCheckoutMessage(items: CartItem[]): string {
   ].join("\n");
 }
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
-
 /** URL de WhatsApp con el detalle del carrito pre-rellenado. */
 export function checkoutHref(items: CartItem[]): string {
-  const text = encodeURIComponent(buildCheckoutMessage(items));
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  return whatsappHref(buildCheckoutMessage(items));
 }

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { whatsappHref } from "@/lib/whatsapp";
 
 type WhatsAppButtonProps = {
   /** Texto pre-rellenado del mensaje (se URL-encodea internamente). */
@@ -8,9 +9,6 @@ type WhatsAppButtonProps = {
   variant?: "solid" | "outline";
   className?: string;
 };
-
-// TODO: definir el número real en NEXT_PUBLIC_WHATSAPP_NUMBER (formato internacional, solo dígitos).
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
 
 const BASE =
   "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold" +
@@ -32,12 +30,9 @@ export function WhatsAppButton({
   variant = "solid",
   className = "",
 }: WhatsAppButtonProps) {
-  const query = message ? `?text=${encodeURIComponent(message)}` : "";
-  const href = `https://wa.me/${WHATSAPP_NUMBER}${query}`;
-
   return (
     <a
-      href={href}
+      href={whatsappHref(message)}
       target="_blank"
       rel="noopener noreferrer"
       className={`${BASE} ${VARIANTS[variant]} ${className}`}
