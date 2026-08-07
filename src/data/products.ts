@@ -295,6 +295,98 @@ export const products: Product[] = [
     tipo: "Botellas",
     aspecto: "1254/1254",
   },
+  {
+    id: "botella-laguna-espejo-rosa",
+    nombre: "Botella Laguna Espejo Rosa",
+    descripcion:
+      "Botella de aluminio rosada con estampado nocturno de la Laguna Espejo, Futaleufú.",
+    precio: 10000,
+    imagen: "/botellas/botella_lagunaespajo_rosa.png",
+    categoria: "souvenir",
+    tipo: "Botellas",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "botella-sierra-teta-rosa",
+    nombre: "Botella Sierra Teta Rosa",
+    descripcion:
+      "Botella de aluminio rosada con mosquetón y el cerro Sierra Teta al atardecer.",
+    precio: 10000,
+    imagen: "/botellas/botella_sierrateta_rosa.png",
+    categoria: "souvenir",
+    tipo: "Botellas",
+    aspecto: "1254/1254",
+  },
+
+  // ── SOUVENIR · Botellas Deportivas ──────────────────────────
+  {
+    id: "botella-deportiva-futaleufu-rio",
+    nombre: "Botella Deportiva Río Futaleufú",
+    descripcion:
+      "Botella deportiva blanca con tapa de pico azul y el rafting en el río Futaleufú.",
+    precio: 15000,
+    imagen: "/botellas/botella_patagoniafutaleufu_riofutaleufu_blanca.png",
+    categoria: "souvenir",
+    tipo: "Botellas Deportivas",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "botella-deportiva-piedra-del-aguila",
+    nombre: "Botella Deportiva Piedra del Águila",
+    descripcion:
+      "Botella deportiva blanca con tapa de pico naranja y el mirador Piedra del Águila.",
+    precio: 15000,
+    imagen: "/botellas/botella_piedradelaguila.png",
+    categoria: "souvenir",
+    tipo: "Botellas Deportivas",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "botella-deportiva-sierra-teta",
+    nombre: "Botella Deportiva Sierra Teta",
+    descripcion:
+      "Botella deportiva blanca con tapa de pico morada y el cerro Sierra Teta nevado.",
+    precio: 15000,
+    imagen: "/botellas/botella_sierrateta_futaleufu.png",
+    categoria: "souvenir",
+    tipo: "Botellas Deportivas",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "botella-deportiva-tres-monjas",
+    nombre: "Botella Deportiva Tres Monjas",
+    descripcion:
+      "Botella deportiva blanca con tapa de pico verde y las agujas del cerro Tres Monjas.",
+    precio: 15000,
+    imagen: "/botellas/botella_tresmonjas.png",
+    categoria: "souvenir",
+    tipo: "Botellas Deportivas",
+    aspecto: "1254/1254",
+  },
+
+  // ── SOUVENIR · Botellas Infantiles ──────────────────────────
+  {
+    id: "botella-infantil-laguna-espejo",
+    nombre: "Botella Infantil Laguna Espejo",
+    descripcion:
+      "Botella infantil con bombilla y asa, estampada con la Laguna Espejo de Futaleufú.",
+    precio: 12000,
+    imagen: "/botellas/botella_lagunaespejo.png",
+    categoria: "souvenir",
+    tipo: "Botellas Infantiles",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "botella-infantil-sierra-teta",
+    nombre: "Botella Infantil Sierra Teta",
+    descripcion:
+      "Botella infantil con bombilla, estampada con el cerro Sierra Teta nevado.",
+    precio: 12000,
+    imagen: "/botellas/botella_sierrateta.png",
+    categoria: "souvenir",
+    tipo: "Botellas Infantiles",
+    aspecto: "1254/1254",
+  },
 
   // ── SOUVENIR · Termos ───────────────────────────────────────
   {
@@ -334,6 +426,50 @@ export const products: Product[] = [
       "Termo taza térmica de acero inoxidable blanco con tapa con asa e ilustración del lago y los álamos de Futaleufú en otoño. Mantiene la temperatura por horas.",
     precio: 18000,
     imagen: "/botellas/termo_tazatermica_futaleufu_blanca.webp",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-laguna-espejo",
+    nombre: "Termo Laguna Espejo",
+    descripcion:
+      "Termo con tapa-taza y estampado nocturno de la Laguna Espejo, Futaleufú.",
+    precio: 18000,
+    imagen: "/botellas/termo_lagunaespejo.png",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-sierra-teta",
+    nombre: "Termo Sierra Teta",
+    descripcion:
+      "Termo con tapa-taza e ilustración del cerro Sierra Teta nevado, Futaleufú.",
+    precio: 18000,
+    imagen: "/botellas/termo_sierrateta.png",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-piedra-del-aguila",
+    nombre: "Termo Piedra del Águila",
+    descripcion:
+      "Termo con tapa-taza e ilustración del mirador Piedra del Águila, Futaleufú.",
+    precio: 18000,
+    imagen: "/botellas/termo_piedradelaguila.png",
+    categoria: "souvenir",
+    tipo: "Termos",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "termo-coltro-futaleufu",
+    nombre: "Termo Coltro de Futaleufú",
+    descripcion:
+      "Termo con tapa-taza y diseño humorístico del coltro futaleufuense.",
+    precio: 18000,
+    imagen: "/botellas/termo_coltro.png",
     categoria: "souvenir",
     tipo: "Termos",
     aspecto: "1254/1254",
@@ -450,6 +586,45 @@ export const products: Product[] = [
     aspecto: "1254/1254",
   },
 
+  // ── PIEZAS ÚNICAS · Tazas de cerámica ───────────────────────
+  {
+    id: "taza-laguna-espejo",
+    nombre: "Taza Laguna Espejo",
+    descripcion:
+      "Taza de cerámica con ilustración de la Laguna Espejo y el valle de Futaleufú.",
+    precio: 12000,
+    imagen: "/piezasunicas/vasos_unicos/vaso_lagunaespejo_blanco.png",
+    categoria: "piezas-unicas",
+    tipo: "Tazas",
+    aspecto: "1254/1254",
+    colores: [
+      { nombre: "Blanca", hex: "#f5f3ef", imagen: "/piezasunicas/vasos_unicos/vaso_lagunaespejo_blanco.png" },
+      { nombre: "Verde", hex: "#22b14c", imagen: "/piezasunicas/vasos_unicos/vaso_lagunaespejo_mangoverde.png" },
+    ],
+  },
+  {
+    id: "taza-lago-yelcho",
+    nombre: "Taza Lago Yelcho",
+    descripcion:
+      "Taza de cerámica roja con el puente del Lago Yelcho, zona de pesca deportiva.",
+    precio: 12000,
+    imagen: "/piezasunicas/vasos_unicos/vaso_lagoyelcho_mandorojo.png",
+    categoria: "piezas-unicas",
+    tipo: "Tazas",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "taza-tres-monjas",
+    nombre: "Taza Tres Monjas",
+    descripcion:
+      "Taza de cerámica con las agujas nevadas del cerro Tres Monjas, Futaleufú.",
+    precio: 12000,
+    imagen: "/piezasunicas/vasos_unicos/vaso_tresmonjas_blanco.png",
+    categoria: "piezas-unicas",
+    tipo: "Tazas",
+    aspecto: "1254/1254",
+  },
+
   // ── PIEZAS ÚNICAS · Joyeros ─────────────────────────────────
   {
     id: "joyero-celeste",
@@ -476,6 +651,66 @@ export const products: Product[] = [
     imagenes: [
       "/piezasunicas/joyeros/joyero_rosa_A.webp",
       "/piezasunicas/joyeros/joyero_rosa_B.webp",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "joyero-futaleufu-plaza",
+    nombre: "Joyero de Viaje Plaza de Futaleufú",
+    descripcion:
+      "Joyero de viaje crema con cierre y ranuras para anillos, con la plaza de Futaleufú nevada.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_futaleufu_plaza_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_futaleufu_plaza_A.png",
+      "/piezasunicas/joyeros/joyero_futaleufu_plaza_B.png",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "joyero-lago-yelcho",
+    nombre: "Joyero de Viaje Lago Yelcho",
+    descripcion:
+      "Joyero de viaje lila con cierre y ranuras para anillos, con el puente del Lago Yelcho.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_lagoyelcho_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_lagoyelcho_A.png",
+      "/piezasunicas/joyeros/joyero_lagoyelcho_B.webp",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "joyero-laguna-espejo",
+    nombre: "Joyero de Viaje Laguna Espejo",
+    descripcion:
+      "Joyero de viaje turquesa con cierre y ranuras para anillos, con la Laguna Espejo.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_lagunaespejo_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_lagunaespejo_A.png",
+      "/piezasunicas/joyeros/joyero_lagunaespejo_B.png",
+    ],
+    categoria: "piezas-unicas",
+    tipo: "Joyeros",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "joyero-un-matecito-che",
+    nombre: "Joyero de Viaje Un Matecito Che",
+    descripcion:
+      "Joyero de viaje lila con cierre y ranuras para anillos, con el chucao tomando mate.",
+    precio: 8000,
+    imagen: "/piezasunicas/joyeros/joyero_unmatecitoche_mora_A.png",
+    imagenes: [
+      "/piezasunicas/joyeros/joyero_unmatecitoche_mora_A.png",
+      "/piezasunicas/joyeros/joyero_unmatecitoche_mora_B.webp",
     ],
     categoria: "piezas-unicas",
     tipo: "Joyeros",
@@ -531,6 +766,30 @@ export const products: Product[] = [
     imagen: "/piezasunicas/bolsas_reciclables/bolsa_reciclable_martinpescador_crema.webp",
     categoria: "piezas-unicas",
     tipo: "Bolsas Reciclables",
+    aspecto: "1254/1254",
+  },
+
+  // ── PIEZAS ÚNICAS · Escritorio ──────────────────────────────
+  {
+    id: "mousepad-futaleufu-patagonia",
+    nombre: "Mousepad Futaleufú Patagonia",
+    descripcion:
+      "Mousepad crema con el río y las montañas de Futaleufú bajo la luna.",
+    precio: 8000,
+    imagen: "/piezasunicas/mousepad_elquenopasaporfutaleufu.png",
+    categoria: "piezas-unicas",
+    tipo: "Escritorio",
+    aspecto: "1254/1254",
+  },
+  {
+    id: "posavaso-laguna-espejo",
+    nombre: "Posavaso Laguna Espejo",
+    descripcion:
+      "Posavaso de cerámica con vista de la Laguna Espejo, Futaleufú.",
+    precio: 5000,
+    imagen: "/piezasunicas/portavaso_lagunaespejo.png",
+    categoria: "piezas-unicas",
+    tipo: "Escritorio",
     aspecto: "1254/1254",
   },
 ];
