@@ -7,6 +7,10 @@ import { Lightbox } from "./Lightbox";
 import { useCart } from "./cart/CartProvider";
 import { formatCLP } from "@/lib/cart";
 
+// max-w-6xl, px-4, gap-x-6: una, dos o cuatro columnas según el viewport.
+const productImageSizes =
+  "(min-width: 1152px) 262px, (min-width: 1024px) calc((100vw - 104px) / 4), (min-width: 640px) calc((100vw - 56px) / 2), calc(100vw - 32px)";
+
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const colores = product.colores ?? [];
@@ -64,7 +68,7 @@ export function ProductCard({ product }: { product: Product }) {
           <AutoImageCarousel
             images={fotos}
             alt={altImagen}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes={productImageSizes}
             quality={65}
           />
         ) : (
@@ -72,7 +76,7 @@ export function ProductCard({ product }: { product: Product }) {
             src={imagen}
             alt={altImagen}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes={productImageSizes}
             quality={65}
             className="object-cover"
           />

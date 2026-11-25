@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   images: string[];
@@ -24,21 +24,34 @@ export function AutoImageCarousel({
   quality,
 }: Props) {
   const [index, setIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [inViewport, setInViewport] = useState(false);
 
   useEffect(() => {
-    if (images.length <= 1) return;
-    // La vitrina siempre rota entre modelos. Con "reducir movimiento" el cambio
-    // es instantáneo (sin deslizamiento) gracias a `motion-reduce:transition-none`
-    // en la pista, pero igualmente va mostrando todos los productos.
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setInViewport(entry.isIntersecting);
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (images.length <= 1 || !inViewport) return;
+    // No avanzar hacia nuevas fotos fuera de pantalla ni en una pestaña oculta.
+    // Con reducir movimiento, el cambio sigue siendo instantáneo.
     const id = setInterval(
-      () => setIndex((i) => (i + 1) % images.length),
+      () => {
+        if (!document.hidden) setIndex((i) => (i + 1) % images.length);
+      },
       interval,
     );
     return () => clearInterval(id);
-  }, [images.length, interval]);
+  }, [images.length, interval, inViewport]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden">
       {/* Pista que se desplaza horizontalmente entre modelos */}
       <div
         className="flex h-full w-full transition-transform duration-700 ease-in-out motion-reduce:transition-none"

@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }: Props) {
             src={cat.imagen}
             alt={`${cat.nombre} de Futaleufú — Futarte, Patagonia chilena`}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(min-width: 1152px) 544px, (min-width: 768px) calc((100vw - 64px) / 2), calc(100vw - 32px)"
             className="object-cover"
             priority
           />

@@ -10,9 +10,10 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   images: {
-    // AVIF primero (≈20-30% más liviano que WebP a igual calidad visual),
-    // con WebP como fallback para navegadores sin soporte.
-    formats: ["image/avif", "image/webp"],
+    // Un solo formato evita guardar variantes AVIF y WebP de cada tamaño.
+    formats: ["image/webp"],
+    // Fotos de catálogo estables. Al reemplazarlas, usar un nombre nuevo.
+    minimumCacheTTL: 2678400, // 31 días
     // Calidades permitidas para next/image (Next 16 las exige explícitas).
     // 60 → hero LCP · 65 → miniaturas de producto (carruseles/tarjetas)
     // 75 → default del resto (lightbox, retratos) · 90 → reserva alta fidelidad.

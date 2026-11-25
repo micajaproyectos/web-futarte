@@ -35,8 +35,8 @@ export function BentoTile({
   className = "",
 }: BentoTileProps) {
   const sizes = featured
-    ? "(max-width: 768px) 100vw, 50vw"
-    : "(max-width: 768px) 50vw, 25vw";
+    ? "(min-width: 1152px) 742px, (min-width: 768px) calc((200vw - 80px) / 3), calc(100vw - 32px)"
+    : "(min-width: 1152px) 363px, (min-width: 768px) calc((100vw - 64px) / 3), calc((100vw - 44px) / 2)";
   return (
     <Link
       href={href}

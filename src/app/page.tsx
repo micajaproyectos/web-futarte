@@ -21,14 +21,23 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const [featuredCategory, ...restCategories] = categories;
 
-  // Imágenes de los productos de una categoría (incluye cada variante de color).
-  // Alimentan el carrusel automático de los tiles del catálogo del home.
-  const imagesForCategory = (slug: string) =>
-    products
-      .filter((p) => p.categoria === slug)
-      .flatMap((p) =>
-        p.colores?.length ? p.colores.map((c) => c.imagen) : [p.imagen],
-      );
+  // Hasta seis fotos repartidas por la categoría para representar el catálogo
+  // sin cargar todas las variantes en la portada. El catálogo sigue completo.
+  const imagesForCategory = (slug: string) => {
+    const images = [
+      ...new Set(
+        products
+          .filter((p) => p.categoria === slug)
+          .flatMap((p) =>
+            p.colores?.length ? p.colores.map((c) => c.imagen) : [p.imagen],
+          ),
+      ),
+    ];
+    const count = Math.min(6, images.length);
+    return Array.from({ length: count }, (_, i) =>
+      images[Math.floor((i * images.length) / count)],
+    );
+  };
 
   const featuredImages = featuredCategory
     ? imagesForCategory(featuredCategory.slug)
